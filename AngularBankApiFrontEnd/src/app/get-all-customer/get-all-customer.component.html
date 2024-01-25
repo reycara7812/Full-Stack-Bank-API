@@ -1,0 +1,29 @@
+
+<div class="card-header">
+  <i class="fas fa-table me-1"></i>
+  DataTable Example
+</div>
+<div class="card-body">
+  <table id="datatablesSimple">
+    <thead>
+    <tr>
+      <th>Customer ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Addresses</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customer of customers">
+      <td>{{ customer.id }}</td>
+      <td>{{ customer.firstName }}</td>
+      <td>{{ customer.lastName }}</td>
+      <td>
+        <div *ngFor="let address of customer.addresses">
+          {{ address.streetNumber }} {{ address.streetName }}, {{ address.city }}, {{ address.state }} {{ address.zipCode }}
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
