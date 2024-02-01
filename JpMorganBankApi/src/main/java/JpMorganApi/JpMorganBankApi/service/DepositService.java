@@ -4,6 +4,7 @@ import JpMorganApi.JpMorganBankApi.handler.exceptions.AccountNotFoundException;
 import JpMorganApi.JpMorganBankApi.handler.exceptions.DepositNotFoundException;
 import JpMorganApi.JpMorganBankApi.model.Account;
 import JpMorganApi.JpMorganBankApi.model.Deposit;
+import JpMorganApi.JpMorganBankApi.model.Withdrawal;
 import JpMorganApi.JpMorganBankApi.repository.AccountRepository;
 import JpMorganApi.JpMorganBankApi.repository.DepositRepository;
 import org.slf4j.Logger;
@@ -41,6 +42,11 @@ public class DepositService {
 
         logger.info("successfully created deposit");
         return depositRepository.save(deposit);
+    }
+
+    public Iterable<Deposit> getDeposits() throws Exception {
+        logger.info("Successfully retrieved deposits");
+        return depositRepository.findAll();
     }
 
     //get deposit by id

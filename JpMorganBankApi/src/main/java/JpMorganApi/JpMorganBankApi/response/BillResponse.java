@@ -5,6 +5,7 @@ import JpMorganApi.JpMorganBankApi.dto.Body;
 import JpMorganApi.JpMorganBankApi.model.Bill;
 import JpMorganApi.JpMorganBankApi.service.BillService;
 import JpMorganApi.JpMorganBankApi.service.CustomerService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,15 @@ public class  BillResponse {
         body.setCode(HttpStatus.OK.value());
         return new ResponseEntity<>(body, HttpStatus.OK);
     }
+
+    public ResponseEntity<?> GetBills() throws Exception {
+        Body body = new Body();
+        body.setMessage("Retrieved all bills");
+        body.setData(billService.getBills());
+        body.setCode(HttpStatus.OK.value());
+        return new ResponseEntity<>(body, HttpStatus.OK);
+    }
+
     public ResponseEntity<?> getBillById(Long billId) throws Exception {
         Optional<Bill> bill = billService.getBillById(billId);
 

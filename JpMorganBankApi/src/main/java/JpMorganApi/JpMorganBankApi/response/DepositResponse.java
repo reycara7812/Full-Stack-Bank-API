@@ -36,6 +36,21 @@ public class DepositResponse {
         body.setMessage("Success");
         return new ResponseEntity<>(body, HttpStatus.OK);
     }
+    public ResponseEntity<?> getAllDeposits() {
+        try {
+            Body body = new Body();
+            body.setData(depositService.getDeposits());
+            body.setCode(HttpStatus.OK.value());
+            body.setMessage("Success");
+            return new ResponseEntity<>(body, HttpStatus.OK);
+        } catch(Exception exception) {
+            Body body = new Body();
+            body.setCode(HttpStatus.NOT_FOUND.value());
+            body.setMessage("Error Fetching Deposits");
+            return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+        }
+    }
+
 
     public ResponseEntity<?> editDeposit(Long depositId, Deposit deposit){
         depositService.editDeposit(depositId, deposit);

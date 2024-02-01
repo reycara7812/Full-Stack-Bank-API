@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/accounts/{accountId}/deposits")
+@CrossOrigin("http://localhost:4200/")
 public class DepositController {
 
     @Autowired
@@ -19,8 +20,8 @@ public class DepositController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getAllDeposits(@PathVariable Long accountId) {
-        return depositResponse.getAllDeposit(accountId);
+    public ResponseEntity<?> getAllDeposits() {
+        return depositResponse.getAllDeposits();
     }
 
     @GetMapping("/{depositId}")

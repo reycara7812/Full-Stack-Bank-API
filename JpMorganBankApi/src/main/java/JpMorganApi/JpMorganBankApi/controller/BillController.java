@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 @RestController
+@CrossOrigin("http://localhost:4200/")
 public class BillController {
     @Autowired
     private BillService billService;
@@ -29,6 +30,10 @@ public class BillController {
         return new ResponseEntity<>(billResponse.getBillByAccount(accountId), HttpStatus.OK);
     }
 
+    @GetMapping("/bills")
+    public ResponseEntity<?> getAllBills() throws Exception {
+        return new ResponseEntity<>(billResponse.GetBills(), HttpStatus.OK);
+    }
     /**
      * gets bill by bill id
      * @param billId

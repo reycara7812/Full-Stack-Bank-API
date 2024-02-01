@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/accounts/{accountId}/withdrawals")
+@CrossOrigin("http://localhost:4200/")
 public class WithdrawalController {
 
     @Autowired
